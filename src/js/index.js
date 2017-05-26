@@ -1,9 +1,8 @@
-(function() {
 
-  let catSpeak = "Cat says meow"/*function catSpeak() {
-    console.log("hey")
+
+function catSpeak() {
     return "Cat says meow";
-  }*/
+  }
 
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     console.log(module.export)
@@ -14,4 +13,3 @@
     console.log("Else triggers")
     window.catSpeak = catSpeak;
   }
-})

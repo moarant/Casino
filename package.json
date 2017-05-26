@@ -4,7 +4,7 @@
   "description": "This includes a casino with a  blackjack game",
   "main": "src/testjs/testIndex.js",
   "scripts": {
-    "test": "node src/testjs/testIndex.js"
+    "test": "node spec/indexSpec.js"
   },
   "author": "molly arant",
   "license": "ISC",
