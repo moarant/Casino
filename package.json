@@ -1,0 +1,14 @@
+{
+  "name": "casino",
+  "version": "1.0.0",
+  "description": "This includes a casino with a  blackjack game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "molly arant",
+  "license": "ISC",
+  "dependencies": {
+    "jasmine": "^2.6.0"
+  }
+}
