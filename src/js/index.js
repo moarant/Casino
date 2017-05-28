@@ -24,26 +24,28 @@ Deck.prototype.deckOfCards =function (){
 
      }
    }
+
     return cardDeck;
 
  }
   Deck.prototype.shuffle= function(){
-    for(var i=0;i<2;i++){
+    //for(var i=0;i<2;i++){
       for(var j=0;j<cardDeck.length;j++){
         var shuffledDeck= Math.floor(Math.random()*cardDeck.length);
         var temporaryDeck= cardDeck[j];
         cardDeck[j]= cardDeck[shuffledDeck];
         cardDeck[shuffledDeck]=temporaryDeck;
       }
-    }
-    console.log(cardDeck);
+    //}
+    //console.log(cardDeck);
     return cardDeck;
   };
 
   function deal(){
-    if (this.deckOfCards.length>0){
+    if (cardDeck.length>0){
       //remove from top of deck if there are cards available
-      return this.deckOfCards.shift();
+      var dealtCard= cardDeck.shift();
+      return dealtCard;
     }
     else{
       var error= "There are no more cards available in the deck";
@@ -55,8 +57,7 @@ Deck.prototype.deckOfCards =function (){
 
 
 
-//module.exports= {"deckOfCards": deckOfCards};
-//module.exports= {"shuffle": shuffle};
+
 //module.exports= {"catSpeak": catSpeak};
 
 
