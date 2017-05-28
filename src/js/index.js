@@ -1,34 +1,43 @@
-
+"use strict"
 
 // function catSpeak() {
 //     return "Cat says meow";
 //   }
-
+var cardDeck;
  function Card (value, suit){
    this.value= value;
    this.suit= suit;
  };
 
-function deckOfCards(){
-  //  this.deckOfCards= new Array(52);
+var Deck = function () {};
+
+
+Deck.prototype.deckOfCards =function (){
+
    var values= new Array("2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace");
    var suits= new Array("Diamonds", "Hearts", "Spades", "Clubs");
-   this.deckOfCards= new Array(52);
-   for(var i=0;i<13;i++){
-     for(var j=0;j<4;j++){
-       this.deckOfCards[i*suits.length+j]= new Card(values[j], suits[i]);
+  cardDeck= new Array(52);
+   for(var i=0;i<4;i++){
+     for(var j=0;j<13;j++){
+       cardDeck[j*suits.length+i]= new Card(values[j], suits[i]);
+
+
      }
    }
+    return cardDeck;
+
  }
-  function shuffle(){
-    for(var i=0;i<5;i++){
-      for(var j=0;j<this.deckOfCards.length;j++){
-        var shuffledDeck= Math.floor(Math.random()*this.deckOfCards.length);
-        var temporaryDeck= this.deckOfCards[j];
-        this.deckOfCards[j]= this.deckOfCards[shuffledDeck];
-        this.deckOfCards[shuffledDeck]=temporaryDeck;
+  Deck.prototype.shuffle= function(){
+    for(var i=0;i<2;i++){
+      for(var j=0;j<cardDeck.length;j++){
+        var shuffledDeck= Math.floor(Math.random()*cardDeck.length);
+        var temporaryDeck= cardDeck[j];
+        cardDeck[j]= cardDeck[shuffledDeck];
+        cardDeck[shuffledDeck]=temporaryDeck;
       }
     }
+    console.log(cardDeck);
+    return cardDeck;
   };
 
   function deal(){
@@ -46,7 +55,8 @@ function deckOfCards(){
 
 
 
-module.exports= {"deal": deal};
+//module.exports= {"deckOfCards": deckOfCards};
+//module.exports= {"shuffle": shuffle};
 //module.exports= {"catSpeak": catSpeak};
 
 
