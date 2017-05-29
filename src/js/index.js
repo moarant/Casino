@@ -1,72 +1,80 @@
-"use strict"
 
-// function catSpeak() {
-//     return "Cat says meow";
-//   }
-var cardDeck;
- function Card (value, suit){
-   this.value= value;
-   this.suit= suit;
- };
+class Card{
+  constructor(value, suit){
+    this.value=value;
+    this.suit=suit;
+  }
 
-var Deck = function () {};
-
-
-Deck.prototype.deckOfCards =function (){
-
-   var values= new Array("2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace");
-   var suits= new Array("Diamonds", "Hearts", "Spades", "Clubs");
-  cardDeck= new Array(52);
-   for(var i=0;i<4;i++){
-     for(var j=0;j<13;j++){
-       cardDeck[j*suits.length+i]= new Card(values[j], suits[i]);
-
-
-     }
-   }
-
-    return cardDeck;
-
- }
-  Deck.prototype.shuffle= function(){
-    //for(var i=0;i<2;i++){
-      for(var j=0;j<cardDeck.length;j++){
-        var shuffledDeck= Math.floor(Math.random()*cardDeck.length);
-        var temporaryDeck= cardDeck[j];
-        cardDeck[j]= cardDeck[shuffledDeck];
-        cardDeck[shuffledDeck]=temporaryDeck;
-      }
-    //}
-    //console.log(cardDeck);
-    return cardDeck;
-  };
-
-  function deal(){
-    if (cardDeck.length>0){
-      //remove from top of deck if there are cards available
-      var dealtCard= cardDeck.shift();
-      return dealtCard;
+  pointValue(){
+    if(this.value<11){
+      return this.value;
+    }else if(this.value>=11){
+      return 10;
+    } else{
+      return 1;
     }
-    else{
-      var error= "There are no more cards available in the deck";
-       return error;
+  }
+  getFaceValue(){
+    if(this.value<11){
+      return this.value;
+    }else if (this.value===11){
+      return "Jack";
+    }else if (this.value===12){
+      return "Queen";
+    }else if (this.value===13){
+      return "King";
+    }else{
+      return "Ace";
     }
-  };
+  }
+  getSuit(){
+    if(this.suit===0){
+      return "\u2666";
+    }else if (this.suit===1){
+      return "\u2665";
+    }else if (this.suit===2){
+      return "\u2660";
+    }else{
+      return "\u2663";
+    }
+  }
+  cardToString(){
+    return this.getFaceValue()+ " "+this.getSuit();
+  }
+}
+class Deck{
+  constructor(){
+    this.deckOfCards = this.createDeck();
+  }
 
 
+createDeck(){
+  let deckOfCards=[];
+  for (let value=2;value<=14;value++){
+    for(let suit=0;suit<=3;suit++){
+      deckOfCards.push(new Card(value, suit));
+    }
+  }
+  return deckOfCards;
+}
 
+shuffle() {
 
+    for (var i =0; i< this.deckOfCards.length;i++) {
+      var j = Math.floor(Math.random() * this.deckOfCards.length);
+      var temp = this.deckOfCards[i];
+      this.deckOfCards[i] = this.deckOfCards[j];
+      this.deckOfCards[j] = temp;
+    }
+    return this.deckOfCards;
+  }
 
-
-//module.exports= {"catSpeak": catSpeak};
-
-
-  // if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  //   console.log(module.export)
-  //   let exports = module.exports= {}
-  //   exports.catSpeak = catSpeak;
-  // }
-  // else {
-  //   console.log("Else triggers")
-  //   window.catSpeak = catSpeak;
-  // }
+dealCard(){
+  if(this.deckOfCards.length>0){
+    return this.deckOfCards.shift();
+  }
+  else{
+    return null;
+  }
+}
+}
