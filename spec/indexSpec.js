@@ -55,3 +55,47 @@ describe ("test Deck class", function(){
   });
 
 });
+
+describe("Test hand class", function(){
+  describe("addCard()", function(){
+    var hand= new Hand();
+    hand.addCard(new Card(11,0));
+    hand.addCard(new Card(5, 0));
+
+    it("should add Jack \u2666 and 5 \u2666 to hand", function(){
+      expect(hand.handToString()).toEqual("Jack \u2666 5 \u2666 ")
+    });
+    it("should increase numberOfCardsInHand to 2", function (){
+      expect(hand.numberOfCardsInHand()).toEqual(2);
+    });
+  });
+
+  describe ("check value() of Jack and 5", function(){
+    var hand= new Hand();
+    hand.addCard(new Card(11,0));
+    hand.addCard(new Card(5,0));
+
+    it("should total the values of a jack and a 5", function(){
+      expect(hand.handValue()).toEqual(15);
+    });
+  });
+  describe ("check that if Ace is present and below 11, it counts it correctly", function(){
+    var hand= new Hand();
+    hand.addCard(new Card(5,0));
+    hand.addCard(new Card(1,2));
+
+    it ("should total the value of a five and an ace", function(){
+        expect(hand.handValue()).toEqual(16);
+    });
+  });
+  describe("check if Ace will calculate at 1 point", function(){
+    var hand= new Hand();
+    hand.addCard(new Card(6,0));
+    hand.addCard(new Card(10,0));
+    hand.addCard(new Card(1,2));
+
+    it("should return a total value of 16+1", function(){
+      expect(hand.handValue()).toEqual(17);
+    });
+  });
+});

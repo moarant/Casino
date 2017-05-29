@@ -8,7 +8,7 @@ class Card{
   pointValue(){
     if(this.value<11){
       return this.value;
-    }else if(this.value>=11){
+    }else if(this.value<14){
       return 10;
     } else{
       return 1;
@@ -77,4 +77,39 @@ dealCard(){
     return null;
   }
 }
+}
+
+class Hand{
+  constructor(){
+    this.cards=[];
+  }
+  addCard(card){
+    this.cards.push(card);
+  }
+  numberOfCardsInHand(){
+    return this.cards.length;
+  }
+  handToString(){
+    var cardsInHand="";
+    for(var i=0;i<this.cards.length;i++){
+      cardsInHand+= this.cards[i].cardToString()+" ";
+    }
+    return cardsInHand;
+  }
+  handValue(){
+    var isAce=false;
+    var size= this.numberOfCardsInHand();
+    var totalHandValue=0;
+
+    for(var i=0; i<size;i++){
+      totalHandValue+=this.cards[i].pointValue();
+      if(this.cards[i].pointValue()===1){
+        isAce=true;
+      }
+    }
+    //if there is an Ace present (previously counted as 1) and total is 11 or less, add 10 so ace is worth 11
+    if (isAce && totalHandValue<=11){
+      return totalHandValue +10;
+    } else return totalHandValue;
+  }
 }
