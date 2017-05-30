@@ -189,11 +189,14 @@ class GameRunner {
         this.dealerHand.addCard(this.gameDeck.dealCard());
     }
 
-    // hit(){
-    //     this.playerHand.addCard(this.gameDeck.dealCard());
-    //     var updateHand= "Your cards: "+ this.playerHand.handToString()+"Your hand value = " +this.playerHand.handValue();
-    //     document.getElementByIdById("display").innerHTML= updateHand;
-    // }
+
+    hit(){
+        this.playerHand.addCard(this.gameDeck.dealCard());
+        var updateHand= "Your cards: "+ this.playerHand.handToString()+"Your hand value = " +this.playerHand.handValue();
+        display.innerHTML+=updateHand;
+        
+    }
+    
 
 
 
