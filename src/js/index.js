@@ -188,23 +188,23 @@ class GameRunner {
         this.dealerHand.addCard(this.gameDeck.dealCard());
     }
 
-    checkDealerScore() {
-        if (this.dealerHand.handValue() < 17) {
-            this.dealerHand.addCard(this.gameDeck.dealCard());
-            this.checkDealerScore();
-        }
-        else if (this.dealerHand.handValue() === 21) {
-            return "dealer wins: scored 21";
-        }
-        else {
-            if (this.dealerHand.handValue() > this.playerHand.handValue()) {
-                return "dealer wins.  Dealer score: " + this.dealerHand.handValue() + "<br> Player score:  " + this.playerHand.handValue();
-            }
-            else {
-                return "Player Wins.  Player score: " + this.playerHand.handValue() + "<br> Dealer score: " + this.dealerHand.handValue();
-            }
-        }
-    }
+    // checkDealerScore() {
+    //     if (this.dealerHand.handValue() < 17) {
+    //         this.dealerHand.addCard(this.gameDeck.dealCard());
+    //         this.checkDealerScore();
+    //     }
+    //     else if (this.dealerHand.handValue() === 21) {
+    //         return "dealer wins: scored 21";
+    //     }
+    //     else {
+    //         if (this.dealerHand.handValue() > this.playerHand.handValue()) {
+    //             return "dealer wins.  Dealer score: " + this.dealerHand.handValue() + "<br> Player score:  " + this.playerHand.handValue();
+    //         }
+    //         else {
+    //             return "Player Wins.  Player score: " + this.playerHand.handValue() + "<br> Dealer score: " + this.dealerHand.handValue();
+    //         }
+    //     }
+    // }
 
 
 
