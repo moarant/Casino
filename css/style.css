@@ -113,6 +113,7 @@ article p { margin-bottom: 20px;}
 section {margin:10px 20px;}
 h1 {font-weight: bold;}
 #main {
+    margin-left: 140px;
 }
 #display {
     border: 1px #aaa solid;
@@ -120,3 +121,21 @@ h1 {font-weight: bold;}
     min-height:300px;
     background:#eee;
 }
+#menu {
+    float: left;
+    width: 100px;
+    margin: 0 0 0 10px;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu li {
+    margin-bottom: 10px;
+}
+
+#menu button {
+    width: 120px;
+}
+

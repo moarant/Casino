@@ -112,7 +112,8 @@ class Hand {
                 isAce = true;
             }
         }
-        //if there is an Ace present (previously counted as 1) and total is 11 or less, add 10 so ace is worth 11
+        //if there is an Ace present (previously counted as 1) and total is 11 or less, 
+        //add 10 so ace is worth 11
         if (isAce && totalHandValue <= 11) {
             return totalHandValue + 10;
         } else {
@@ -128,7 +129,7 @@ class GameRunner {
         this.gameDeck = new Deck();
     }
     //deal two cards to player
-    //check player score.  If above 21, player busted
+    //check player score.  If player or dealer= 21--gameover
     //player hit or stay. if hit, deal card. check score. if above 21: busted.
     //if player stay:: deal two cards to dealer.
     //if dealer below 17: deal again. 
@@ -187,6 +188,14 @@ class GameRunner {
         this.dealerHand.addCard(this.gameDeck.dealCard());
         this.dealerHand.addCard(this.gameDeck.dealCard());
     }
+
+    // hit(){
+    //     this.playerHand.addCard(this.gameDeck.dealCard());
+    //     var updateHand= "Your cards: "+ this.playerHand.handToString()+"Your hand value = " +this.playerHand.handValue();
+    //     document.getElementByIdById("display").innerHTML= updateHand;
+    // }
+
+
 
     // checkDealerScore() {
     //     if (this.dealerHand.handValue() < 17) {
