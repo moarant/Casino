@@ -99,3 +99,16 @@ describe("Test hand class", function(){
     });
   });
 });
+
+describe("Test gameRunner", function(){
+  describe("checkBlackJack() if dealer 21", function(){
+    var gameRunner= new GameRunner();
+    gameRunner.dealerHand.addCard(new Card(1, 0));
+    gameRunner.dealerHand.addCard(new Card(11,0));
+    gameRunner.playerHand.addCard(new Card(5,2));
+    gameRunner.playerHand.addCard(new Card(2,1));
+    it("should return dealer win", function(){
+      expect(gameRunner.checkBlackJack()).toEqual("You lose");
+    });
+  });
+});
